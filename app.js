@@ -7,7 +7,7 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const port = process.env.PORT || 3000;
 
-const connection = require('./api.classpath\n/helpers/connection');
+const connection = require('./api/helpers/connection');
 connection.connect();
 
 app.use(bodyParser.urlencoded({ extended: true }));

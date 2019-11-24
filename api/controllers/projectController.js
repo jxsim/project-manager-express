@@ -10,7 +10,6 @@ const errorSerializer = require('../serializers/errorSerializer');
 // index
 router.get('/', async (req, res) => {
   try {
-    // const projects = await Project.find().populate('manager');
     const projects = await Project.aggregate([
       {
         $lookup: {
@@ -30,16 +29,22 @@ router.get('/', async (req, res) => {
       },
       {
         $project: {
+          id: '$_id',
           projectDescription: 1,
           priority: 1,
           startDate: 1,
           endDate: 1,
           isCompleted: 1,
-          manager: 1,
+          manager: {
+            $arrayElemAt: [ '$manager', 0 ]
+          },
           taskCount: { $size: "$tasks"}
         }
       }
     ]);
+
+    console.log('what is p', projects);
+    console.log('what is p2', ProjectSerializer.serialize(projects));
 
     res.status(200).send(ProjectSerializer.serialize(projects));
   } catch (err) {
