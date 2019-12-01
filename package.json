@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "server": "node app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js",
+    "test": "jasmine",
+    "pretest": "node fixture.js"
   },
   "author": "",
   "license": "ISC",
@@ -14,10 +15,15 @@
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "jsonapi-serializer": "^3.6.5",
+    "method-override": "^3.0.0",
     "mongodb": "^3.3.4",
     "mongoose": "^5.7.11"
   },
   "devDependencies": {
-    "@types/node": "~8.9.4"
+    "@types/node": "~8.9.4",
+    "istanbul": "^0.4.5",
+    "jasmine": "^3.5.0",
+    "node-mongodb-fixtures": "^3.1.2",
+    "supertest": "^4.0.2"
   }
 }

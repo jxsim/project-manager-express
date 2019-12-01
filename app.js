@@ -5,10 +5,6 @@ const errorSerializer = require('./api/serializers/errorSerializer');
 
 const bodyParser = require('body-parser');
 const path = require('path');
-const port = process.env.PORT || 3000;
-
-const connection = require('./api/helpers/connection');
-connection.connect();
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -23,4 +19,5 @@ app.use('/users', require('./api/controllers/userController'));
 app.use(function(req, res) {
   res.status(404).send(errorSerializer(404, 'url not found'));
 });
-app.listen(port, () => console.log(`app listening on port ${port}!`));
+
+module.exports = app;

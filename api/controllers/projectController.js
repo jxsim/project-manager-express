@@ -43,9 +43,6 @@ router.get('/', async (req, res) => {
       }
     ]);
 
-    console.log('what is p', projects);
-    console.log('what is p2', ProjectSerializer.serialize(projects));
-
     res.status(200).send(ProjectSerializer.serialize(projects));
   } catch (err) {
     res.status(500).send(errorSerializer(500, err.errmsg));

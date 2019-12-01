@@ -1,6 +1,6 @@
 const JSONAPISerializer = require('jsonapi-serializer').Serializer;
 
-const type = 'tasks';
+const type = 'projects';
 const attributes = ['projectDescription', 'priority', 'startDate', 'endDate', 'isCompleted', 'taskCount', 'manager'];
 
 module.exports = new JSONAPISerializer(type, { keyForAttribute: function(attribute) {
